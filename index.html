@@ -179,8 +179,10 @@ section { padding-block: 96px; }
 
 /* Crédits photo */
 .credit-on { position: relative; }
-.photo-credit { position: absolute; right: 8px; bottom: 8px; font-family: var(--f-mono); font-size: 10px; letter-spacing: .04em; color: var(--ink); background: rgba(246, 242, 234, .88); padding: 2px 7px; }
-.credit-line { font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); margin-top: -6px; }
+.photo-credit { position: absolute; right: 6px; bottom: 6px; font-family: var(--f-mono); font-size: 7px; line-height: 1.3; letter-spacing: .04em; color: var(--ink); background: rgba(246, 242, 234, .85); padding: 1px 4px; }
+.photo-credit a, .credit-line a, figcaption a { color: inherit; text-decoration: none; }
+.photo-credit a:hover, .credit-line a:hover, figcaption a:hover { text-decoration: underline; }
+.credit-line { font-family: var(--f-mono); font-size: 7px; letter-spacing: .04em; color: var(--muted); margin-top: -8px; }
 
 /* Grilles */
 .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
@@ -283,7 +285,7 @@ footer .logo { width: 70px; }
     <h1><span class="print" data-t="Sérigraphie">Sérigraphie</span><br><span class="print l2" data-t="&amp; art">&amp; art</span></h1>
     <div class="hero-foot">
       <p>Peintures, fresques murales et sérigraphie imprimée à la main dans mon atelier de Thonon-les-Bains.</p>
-      <div class="hero-photo"><img src="img/atelier-presse.jpg" alt="Sébastien imprime un t-shirt sur la presse carrousel de l'atelier" width="1600" height="1073"><span class="photo-credit">Photo&nbsp;: Blandine Faure</span></div>
+      <div class="hero-photo"><img src="img/atelier-presse.jpg" alt="Sébastien imprime un t-shirt sur la presse carrousel de l'atelier" width="1600" height="1073"><span class="photo-credit">Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></span></div>
     </div>
   </div>
 </div>
@@ -320,9 +322,9 @@ footer .logo { width: 70px; }
     </div>
 
     <ol class="steps">
-      <li class="step"><span class="n">01</span><img src="img/atelier-encres.jpg" alt="Préparation des encres à l'atelier" width="900" height="1342" loading="lazy"><span class="credit-line">Photo&nbsp;: Blandine Faure</span><h3>Le projet</h3><p>On parle quantités, supports et délai. Je prépare le fichier et le visuel, une couleur par écran.</p></li>
-      <li class="step"><span class="n">02</span><img src="img/atelier-insolation.jpg" alt="Insolation d'un écran de sérigraphie" width="900" height="1342" loading="lazy"><span class="credit-line">Photo&nbsp;: Blandine Faure</span><h3>On avance ensemble</h3><p>Couleurs, emplacement, supports&nbsp;: on valide chaque étape ensemble avant de lancer l'impression.</p></li>
-      <li class="step"><span class="n">03</span><img src="img/atelier-tirage.jpg" alt="Tirage d'un t-shirt à la main" width="900" height="1342" loading="lazy"><span class="credit-line">Photo&nbsp;: Blandine Faure</span><h3>L'impression</h3><p>Chaque pièce est tirée à la main à l'atelier, puis séchée. Vous récupérez votre commande.</p></li>
+      <li class="step"><span class="n">01</span><img src="img/atelier-encres.jpg" alt="Préparation des encres à l'atelier" width="900" height="1342" loading="lazy"><span class="credit-line">Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></span><h3>Le projet</h3><p>On parle quantités, supports et délai. Je prépare le fichier et le visuel, une couleur par écran.</p></li>
+      <li class="step"><span class="n">02</span><img src="img/atelier-insolation.jpg" alt="Insolation d'un écran de sérigraphie" width="900" height="1342" loading="lazy"><span class="credit-line">Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></span><h3>On avance ensemble</h3><p>Couleurs, emplacement, supports&nbsp;: on valide chaque étape ensemble avant de lancer l'impression.</p></li>
+      <li class="step"><span class="n">03</span><img src="img/atelier-tirage.jpg" alt="Tirage d'un t-shirt à la main" width="900" height="1342" loading="lazy"><span class="credit-line">Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></span><h3>L'impression</h3><p>Chaque pièce est tirée à la main à l'atelier, puis séchée. Vous récupérez votre commande.</p></li>
     </ol>
     <div class="cta-block">
       <div>
@@ -347,13 +349,13 @@ footer .logo { width: 70px; }
         <figure><img src="img/commande-festivarts.jpg" alt="T-shirt blanc imprimé du logo Festiv'Arts en rouge" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · t-shirts</figcaption></figure>
         <figure><img src="img/real-festivarts-2379.jpg" alt="T-shirt noir imprimé du logo Festiv'Arts en rouge" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · t-shirts noirs</figcaption></figure>
         <figure><img src="img/commande-tote.jpg" alt="Tote bag imprimé du logo Festiv'Arts" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · tote bags</figcaption></figure>
-        <figure><img src="img/real-tshirt-noir.jpg" alt="T-shirts noirs imprimés en rouge sur la presse" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Série de t-shirts · Photo&nbsp;: Blandine Faure</figcaption></figure>
+        <figure><img src="img/real-tshirt-noir.jpg" alt="T-shirts noirs imprimés en rouge sur la presse" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Série de t-shirts · Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></figcaption></figure>
         <figure><img src="img/real-festivarts-2381.jpg" alt="Écran de sérigraphie du logo Festiv'Arts" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · l'écran</figcaption></figure>
-        <figure><img src="img/real-tirage-rouge.jpg" alt="Tirage en rouge sur t-shirt noir" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Tirage en cours · Photo&nbsp;: Blandine Faure</figcaption></figure>
+        <figure><img src="img/real-tirage-rouge.jpg" alt="Tirage en rouge sur t-shirt noir" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Tirage en cours · Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></figcaption></figure>
         <figure><img src="img/real-festivarts-2377.jpg" alt="T-shirts blanc et noir Festiv'Arts" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · série</figcaption></figure>
-        <figure><img src="img/real-carrousel.jpg" alt="Impression sur la presse carrousel" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Presse carrousel · Photo&nbsp;: Blandine Faure</figcaption></figure>
+        <figure><img src="img/real-carrousel.jpg" alt="Impression sur la presse carrousel" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Presse carrousel · Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></figcaption></figure>
         <figure><img src="img/real-festivarts-2383.jpg" alt="Tote bag Festiv'Arts" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · tote bags</figcaption></figure>
-        <figure><img src="img/real-tshirt-dos.jpg" alt="T-shirt imprimé dans le dos" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Impression dos · Photo&nbsp;: Blandine Faure</figcaption></figure>
+        <figure><img src="img/real-tshirt-dos.jpg" alt="T-shirt imprimé dans le dos" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Impression dos · Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></figcaption></figure>
         <figure><img src="img/real-festivarts-2378.jpg" alt="Détail du logo imprimé" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · détail</figcaption></figure>
       </div>
     </div>
@@ -529,7 +531,7 @@ footer .logo { width: 70px; }
       <h2><span class="print" data-t="Sébastien Mariot, dit Sebos">Sébastien Mariot, dit Sebos</span></h2>
     </div>
     <div class="about">
-      <div class="framed credit-on"><span class="photo-credit" style="z-index:1">Photo&nbsp;: Blandine Faure</span><img src="img/atelier-tirage.jpg" alt="Sébastien à l'atelier" width="900" height="1342" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%"></div>
+      <div class="framed credit-on"><span class="photo-credit" style="z-index:1">Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></span><img src="img/atelier-tirage.jpg" alt="Sébastien à l'atelier" width="900" height="1342" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%"></div>
       <div class="txt">
         <p>Originaire de Thonon-les-Bains, diplômé d'un master en design industriel en 2015, je me suis spécialisé dans le graphisme et la création d'identité visuelle, en agence puis en freelance.</p>
         <p>En parallèle, j'ai développé mon univers artistique et je me suis formé à la sérigraphie. Séduit par la multitude d'applications possibles et par le côté artisanal de cette technique, j'ai ouvert mon atelier à Thonon-les-Bains début 2022. Mes créations trouvent leur place sur le papier comme sur le textile, et je peins aussi sur les murs.</p>
