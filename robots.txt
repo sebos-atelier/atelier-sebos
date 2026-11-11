@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://atelier-sebos.fr/sitemap.xml

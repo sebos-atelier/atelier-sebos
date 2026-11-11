@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atelier Sebos · Sérigraphie et art à Thonon-les-Bains</title>
+<meta name="description" content="Atelier Sebos, Sébastien Mariot : sérigraphie sur commande (t-shirts, tote bags, affiches) et ateliers à Thonon-les-Bains. Peintures, dessins, sérigraphies d'art et fresques murales.">
+<link rel="canonical" href="https://atelier-sebos.fr/">
+<meta name="theme-color" content="#F6F2EA">
+<link rel="icon" href="img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Atelier Sebos">
+<meta property="og:title" content="Atelier Sebos · Sérigraphie et art à Thonon-les-Bains">
+<meta property="og:description" content="Atelier Sebos, Sébastien Mariot : sérigraphie sur commande (t-shirts, tote bags, affiches) et ateliers à Thonon-les-Bains. Peintures, dessins, sérigraphies d'art et fresques murales.">
+<meta property="og:url" content="https://atelier-sebos.fr/">
+<meta property="og:image" content="https://atelier-sebos.fr/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Atelier Sebos", "alternateName": "Sebos", "description": "Atelier Sebos, Sébastien Mariot : sérigraphie sur commande (t-shirts, tote bags, affiches) et ateliers à Thonon-les-Bains. Peintures, dessins, sérigraphies d'art et fresques murales.", "founder": {"@type": "Person", "name": "Sébastien Mariot"}, "url": "https://atelier-sebos.fr/", "image": "https://atelier-sebos.fr/img/atelier-presse.jpg", "logo": "https://atelier-sebos.fr/img/logo.svg", "telephone": "+33682476713", "address": {"@type": "PostalAddress", "addressLocality": "Thonon-les-Bains", "postalCode": "74200", "addressRegion": "Haute-Savoie", "addressCountry": "FR"}, "areaServed": ["Thonon-les-Bains", "Chablais", "Haute-Savoie"], "sameAs": ["https://www.instagram.com/sebos_gh/"], "knowsAbout": ["Sérigraphie", "Impression textile", "Fresque murale", "Peinture"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap">
+<style>
+/* Layout : une affiche sérigraphiée en trois encres (rouge écran, bleu fresque, noir) sur papier.
+   Chaque section est un « tirage » : un aplat de couleur pleine largeur, un gros titre décalé d'un passage
+   d'encre, et les photos posées dessus comme des épreuves. Choix assumé d'un seul thème, papier clair. */
+:root {
+  --paper: #F6F2EA;
+  --paper-2: #ECE6DA;
+  --ink: #161514;
+  --muted: #55524B;
+  --red: #F2A18E;
+  --blue: #A8B9EE;
+  --butter: #F2DC9B;
+  --red-deep: #D9705A;
+  --blue-deep: #6F86D6;
+  --line: #CFCABD;
+  --f-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --f-body: "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "Space Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --col: 1040px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 17px; line-height: 1.6; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--blue-deep); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 900; line-height: .9; margin: 0; letter-spacing: .005em; text-transform: uppercase; text-wrap: balance; }
+p { margin: 0; }
+.label { font-family: var(--f-mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
+
+.wrap {
+  max-width: calc(var(--col) + 32px); margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Texture de papier et trame */
+.slab { position: relative; isolation: isolate; }
+.slab::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .09;
+  background: radial-gradient(circle at center, #000 0 28%, transparent 30%) 0 0 / 7px 7px;
+  -webkit-mask-image: linear-gradient(160deg, #000 0%, transparent 45%);
+          mask-image: linear-gradient(160deg, #000 0%, transparent 45%);
+}
+.slab.red { background: var(--red); color: var(--ink); }
+.slab.blue { background: var(--blue); color: var(--ink); }
+.slab.black { background: var(--butter); color: var(--ink); }
+.slab .label { color: inherit; opacity: .85; }
+
+/* Titre en deux passages d'encre, légèrement décalés */
+.print { position: relative; display: inline-block; }
+.print::after {
+  content: attr(data-t); position: absolute; left: 0; top: 0; width: 100%;
+  transform: translate(.045em, .04em); mix-blend-mode: multiply; pointer-events: none; z-index: -1;
+}
+.on-paper .print::after { color: var(--red); }
+.slab.red .print::after { color: var(--blue); }
+.slab.blue .print::after { color: var(--red); }
+.slab.black .print::after { color: var(--red); }
+
+/* Repères de calage, dans les marges */
+.reg { position: absolute; width: 22px; height: 22px; border: 1.5px solid currentColor; border-radius: 50%; pointer-events: none; opacity: .8; }
+.reg::before, .reg::after { content: ""; position: absolute; background: currentColor; }
+.reg::before { left: 50%; top: -8px; bottom: -8px; width: 1.5px; transform: translateX(-50%); }
+.reg::after { top: 50%; left: -8px; right: -8px; height: 1.5px; transform: translateY(-50%); }
+.reg.tl { top: 18px; left: max(16px, env(safe-area-inset-left, 0px)); }
+.reg.tr { top: 18px; right: max(16px, env(safe-area-inset-right, 0px)); }
+.reg.bl { bottom: 18px; left: max(16px, env(safe-area-inset-left, 0px)); }
+.reg.br { bottom: 18px; right: max(16px, env(safe-area-inset-right, 0px)); }
+@media (max-width: 700px) { .reg { width: 16px; height: 16px; } .reg::before { top: -6px; bottom: -6px; } .reg::after { left: -6px; right: -6px; } }
+
+/* En-tête */
+.top { padding-block: 28px 22px; }
+.top .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 28px; }
+.logo { display: block; width: 92px; }
+.logo img { width: 100%; height: auto; }
+.menu ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 22px; font-family: var(--f-mono); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.menu a { text-decoration: none; }
+.menu a:hover { color: var(--red-deep); }
+
+/* Affiche d'ouverture */
+.hero { padding-block: 64px 0; }
+.hero .wrap { display: grid; gap: 36px; }
+.hero h1 { font-size: clamp(44px, 11.5vw, 156px); line-height: .84; overflow-wrap: anywhere; }
+.hero h1 .l2 { color: var(--paper); }
+.hero-foot { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 28px 40px; align-items: end; }
+.hero-foot p { font-family: var(--f-display); font-weight: 800; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.05; text-transform: none; max-width: 22ch; }
+.hero-photo { position: relative; transform: rotate(-1.2deg); margin-bottom: -90px; box-shadow: 0 0 0 10px var(--paper); }
+.hero-photo img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+@media (max-width: 720px) { .hero-foot { grid-template-columns: minmax(0, 1fr); } .hero-photo { margin-bottom: -50px; } }
+
+/* Deux portes */
+.doors { padding-block: 140px 0; }
+.doors .wrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.door { display: grid; gap: 18px; align-content: space-between; min-height: 220px; padding: 26px; text-decoration: none; color: var(--ink); transition: transform .15s ease; }
+.door.red { background: var(--red); }
+.door.blue { background: var(--blue); }
+.door h2 { font-size: clamp(40px, 6vw, 68px); }
+.door .go { font-family: var(--f-mono); font-weight: 700; font-size: 14px; }
+.door:hover { transform: translate(-4px, -4px); box-shadow: 6px 6px 0 var(--ink); }
+@media (max-width: 640px) { .doors .wrap { grid-template-columns: minmax(0, 1fr); } }
+
+/* Sections */
+section { padding-block: 96px; }
+.sec-head { display: grid; gap: 18px; margin-bottom: 44px; }
+.sec-head h2 { font-size: clamp(44px, 10vw, 128px); overflow-wrap: anywhere; }
+.sec-head, .real, .carousel { min-width: 0; }
+.sec-head p { font-size: 19px; max-width: 56ch; }
+.sub { display: grid; gap: 10px; margin: 72px 0 22px; }
+.sub h3 { font-size: clamp(34px, 5vw, 52px); }
+.sub p { max-width: 56ch; opacity: .85; }
+
+.list { display: grid; border-top: 3px solid var(--ink); }
+.list > div { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 6px 28px; padding-block: 18px; border-bottom: 1.5px solid var(--ink); align-items: baseline; }
+.list h3 { font-size: 34px; }
+@media (max-width: 600px) { .list > div { grid-template-columns: minmax(0, 1fr); } }
+.who { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.who span { font-family: var(--f-mono); font-size: 12px; font-weight: 700; text-transform: uppercase; padding: 6px 12px; background: var(--ink); color: var(--paper); }
+
+/* Étapes */
+.steps { list-style: none; margin: 64px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.step { display: grid; gap: 12px; align-content: start; }
+.step img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.step .n { font-family: var(--f-display); font-weight: 900; font-size: 72px; line-height: .8; color: var(--red-deep); }
+.step:nth-child(2) .n { color: var(--blue-deep); }
+.step h3 { font-size: 30px; }
+.step p { color: var(--muted); }
+@media (max-width: 760px) { .steps { grid-template-columns: minmax(0, 1fr); } }
+
+/* Galerie Réalisations : défilement horizontal, au doigt, à la souris ou aux flèches */
+.real { margin-top: 96px; }
+.real .sec-head { margin-bottom: 18px; }
+.real-intro { font-size: 16px; color: var(--muted); max-width: 62ch; }
+.real-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin: 26px 0 14px; }
+.real-nav { display: flex; gap: 8px; }
+.real-nav button { width: 46px; height: 46px; font-family: var(--f-mono); font-size: 18px; font-weight: 700; cursor: pointer; background: var(--ink); color: var(--paper); border: 0; }
+.real-nav button:hover { background: var(--red-deep); }
+.real-nav button:disabled { opacity: .3; cursor: default; background: var(--ink); }
+.track { display: grid; grid-auto-flow: column; grid-auto-columns: clamp(220px, 30%, 320px); gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; padding-bottom: 12px; cursor: grab; overscroll-behavior-x: contain; }
+.track.dragging { cursor: grabbing; scroll-snap-type: none; }
+.track figure { margin: 0; scroll-snap-align: start; display: grid; gap: 8px; }
+.slab .track figcaption, .slab .real-bar .label { color: inherit; opacity: .85; }
+.slab .real-nav button { background: var(--paper); color: var(--ink); }
+.slab .real-nav button:hover { background: var(--ink); color: var(--paper); }
+.slab .real-nav button:disabled { background: var(--paper); }
+.carousel .real-bar { margin-top: 18px; }
+.track img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; pointer-events: none; user-select: none; }
+.track figcaption { font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); }
+
+/* Appel à l'action après les étapes */
+.cta-block { margin-top: 56px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px 32px; align-items: center; padding: 28px; background: var(--red); }
+.cta-block h3 { font-size: clamp(30px, 4.4vw, 46px); }
+.cta-block p { margin-top: 8px; max-width: 48ch; }
+.cta-block .btn { font-size: 15px; padding: 18px 26px; }
+@media (max-width: 640px) { .cta-block { grid-template-columns: minmax(0, 1fr); } }
+
+/* Grilles */
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid figure, .works figure { margin: 0; }
+.grid img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.grid.sq img { aspect-ratio: 1; }
+@media (max-width: 620px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.works { columns: 3 220px; column-gap: 12px; }
+.works figure { margin: 0 0 12px; break-inside: avoid; }
+.works img { width: 100%; height: auto; }
+.wide-img img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; margin-bottom: 12px; }
+.framed img { outline: 8px solid var(--paper); outline-offset: -8px; }
+
+.cta { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin-top: 48px; }
+.btn { font-family: var(--f-mono); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: .06em; text-decoration: none; padding: 15px 22px; background: var(--ink); color: var(--paper); }
+.btn:hover { background: var(--red-deep); }
+.slab .btn { background: var(--ink); color: var(--paper); }
+.slab .btn:hover { background: var(--paper); color: var(--ink); }
+
+/* Catégories d'œuvres en menus dépliants */
+.cats { display: grid; border-top: 3px solid var(--ink); margin-top: 8px; }
+.cat { border-bottom: 1.5px solid var(--ink); }
+.cat summary { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 16px; align-items: center; padding-block: 22px; cursor: pointer; }
+.cat summary::-webkit-details-marker { display: none; }
+.cat summary h3 { font-size: clamp(30px, 4.6vw, 48px); }
+.cat summary .count { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.cat summary .plus { width: 40px; height: 40px; display: grid; place-items: center; background: var(--ink); color: var(--paper); font-family: var(--f-mono); font-size: 22px; font-weight: 700; transition: transform .2s ease, background .2s ease; }
+.cat:nth-child(odd) summary:hover .plus { background: var(--red-deep); }
+.cat:nth-child(even) summary:hover .plus { background: var(--blue-deep); }
+.cat[open] summary .plus { transform: rotate(45deg); }
+.cat summary { grid-template-rows: auto auto; transition: background .2s ease; margin-inline: -12px; padding-inline: 12px; }
+.cat summary:hover { background: var(--paper-2); }
+.cat .peek { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 6px; }
+.cat .peek img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.cat .peek .more { display: grid; place-items: center; background: var(--ink); color: var(--paper); font-family: var(--f-mono); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; text-align: center; padding: 6px; aspect-ratio: 1; }
+.cat:nth-child(odd) summary:hover .peek .more { background: var(--red-deep); }
+.cat:nth-child(even) summary:hover .peek .more { background: var(--blue-deep); }
+.cat[open] .peek { display: none; }
+@media (max-width: 600px) { .cat .peek { grid-template-columns: repeat(3, minmax(0, 1fr)); } .cat .peek img:nth-child(n+3) { display: none; } .cat summary .peek { grid-row: 3; } }
+.cat-body { padding-bottom: 28px; display: grid; gap: 12px; }
+.cat-body > p { color: var(--muted); max-width: 56ch; }
+@media (max-width: 600px) {
+  .cat summary { grid-template-columns: minmax(0, 1fr) auto; }
+  .cat summary .count { grid-column: 1; grid-row: 2; }
+  .cat summary .plus { grid-column: 2; grid-row: 1 / span 2; }
+  .works { columns: 2; column-gap: 8px; }
+  .works figure { margin-bottom: 8px; }
+  .cat-body .grid { gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .cat summary .plus { transition: none; } }
+
+/* À propos */
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 32px 48px; }
+.about .txt { display: grid; gap: 16px; }
+.about .txt p:first-child { font-family: var(--f-display); font-weight: 800; font-size: 28px; line-height: 1.08; }
+@media (max-width: 760px) { .about { grid-template-columns: minmax(0, 1fr); } }
+
+/* Expo */
+.expo { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px 40px; align-items: end; }
+.expo h3 { font-size: clamp(44px, 7vw, 88px); }
+.dates { display: grid; font-family: var(--f-mono); font-size: 14px; font-variant-numeric: tabular-nums; border-top: 2px solid currentColor; }
+.dates div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 12px 0; border-bottom: 1.5px solid currentColor; }
+@media (max-width: 760px) { .expo { grid-template-columns: minmax(0, 1fr); } }
+
+/* Contact */
+.contact { display: grid; border-top: 2px solid var(--ink); }
+.c-item { display: grid; grid-template-columns: minmax(0, 140px) minmax(0, 1fr) auto; gap: 6px 20px; align-items: center; padding-block: 20px; border-bottom: 1.5px solid rgba(22, 21, 20, .25); }
+.c-item .val { font-family: var(--f-display); font-weight: 800; font-size: clamp(26px, 4vw, 40px); line-height: 1; overflow-wrap: anywhere; text-decoration: none; }
+.c-item a.val:hover { color: var(--red-deep); }
+.c-item button { font-family: var(--f-mono); font-size: 12px; font-weight: 700; text-transform: uppercase; cursor: pointer; padding: 7px 12px; background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+@media (max-width: 560px) { .c-item { grid-template-columns: minmax(0, 1fr) auto; } .c-item .label { grid-column: 1 / -1; } }
+
+footer { padding-block: 36px 44px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; }
+footer .logo { width: 70px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .door { transition: none; } }
+</style>
+</head>
+<body>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Sebos, haut de page"><img src="img/logo.svg" alt="Sebos" width="140" height="108"></a>
+    <nav class="menu" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#serigraphie">Sérigraphie</a></li>
+        <li><a href="#ateliers">Ateliers</a></li>
+        <li><a href="#artiste">Œuvres</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="slab red hero">
+  <i class="reg tl" aria-hidden="true"></i><i class="reg tr" aria-hidden="true"></i>
+  <div class="wrap">
+    <span class="label">Atelier Sebos · Thonon-les-Bains</span>
+    <h1><span class="print" data-t="Sérigraphie">Sérigraphie</span><br><span class="print l2" data-t="&amp; art">&amp; art</span></h1>
+    <div class="hero-foot">
+      <p>Peintures, fresques murales et sérigraphie imprimée à la main dans mon atelier de Thonon-les-Bains.</p>
+      <div class="hero-photo"><img src="img/atelier-presse.jpg" alt="Sébastien imprime un t-shirt sur la presse carrousel de l'atelier" width="1600" height="1073"></div>
+    </div>
+  </div>
+</div>
+
+<div class="doors">
+  <nav class="wrap" aria-label="Deux entrées">
+    <a class="door red" href="#serigraphie">
+      <span class="label">Particuliers, pros, collectivités</span>
+      <h2>J'imprime pour vous</h2>
+      <span class="go">Voir l'offre →</span>
+    </a>
+    <a class="door blue" href="#artiste">
+      <span class="label">Toiles, dessins, fresques</span>
+      <h2>Mon travail d'artiste</h2>
+      <span class="go">Voir les œuvres →</span>
+    </a>
+  </nav>
+</div>
+
+<section id="serigraphie" class="on-paper">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Sérigraphie sur commande</span>
+      <h2><span class="print" data-t="Vos visuels, imprimés à la main">Vos visuels, imprimés à la main</span></h2>
+      <p>J'imprime en sérigraphie sur textile et sur papier, en petites et moyennes séries. Vous arrivez avec un visuel ou une idée, je m'occupe du reste.</p>
+    </div>
+    <div class="list">
+      <div><h3>T-shirts &amp; textiles</h3><p>T-shirts, sweats, tote bags pour une équipe, un événement, une marque ou un cadeau.</p></div>
+      <div><h3>Affiches &amp; papier</h3><p>Affiches d'événement, cartes, tirages d'art numérotés.</p></div>
+      <div><h3>Création du visuel</h3><p>Pas encore de visuel&nbsp;? Graphiste de formation, je peux le dessiner pour vous.</p></div>
+    </div>
+    <div class="who" aria-label="Pour qui">
+      <span>Particuliers</span><span>Associations</span><span>Commerces &amp; marques</span><span>Mairies &amp; collectivités</span><span>Festivals</span>
+    </div>
+
+    <ol class="steps">
+      <li class="step"><span class="n">01</span><img src="img/atelier-encres.jpg" alt="Préparation des encres à l'atelier" width="900" height="1342" loading="lazy"><h3>Le projet</h3><p>On parle quantités, supports et délai. Je prépare le fichier et le visuel, une couleur par écran.</p></li>
+      <li class="step"><span class="n">02</span><img src="img/atelier-insolation.jpg" alt="Insolation d'un écran de sérigraphie" width="900" height="1342" loading="lazy"><h3>On avance ensemble</h3><p>Couleurs, emplacement, supports&nbsp;: on valide chaque étape ensemble avant de lancer l'impression.</p></li>
+      <li class="step"><span class="n">03</span><img src="img/atelier-tirage.jpg" alt="Tirage d'un t-shirt à la main" width="900" height="1342" loading="lazy"><h3>L'impression</h3><p>Chaque pièce est tirée à la main à l'atelier, puis séchée. Vous récupérez votre commande.</p></li>
+    </ol>
+    <div class="cta-block">
+      <div>
+        <h3>Un projet d'impression&nbsp;?</h3>
+        <p>Dites-moi le support, la quantité et la date souhaitée&nbsp;: je vous réponds avec un devis sous quelques jours.</p>
+      </div>
+      <a class="btn" href="mailto:sebos.mariot@gmail.com?subject=Demande%20de%20devis%20s%C3%A9rigraphie&amp;body=Bonjour%20S%C3%A9bastien%2C%0A%0AJe%20souhaite%20un%20devis%20pour%20%3A%0A-%20Support%20%28t-shirts%2C%20sweats%2C%20tote%20bags%2C%20affiches%E2%80%A6%29%20%3A%0A-%20Quantit%C3%A9%20%3A%0A-%20Nombre%20de%20couleurs%20%3A%0A-%20Date%20souhait%C3%A9e%20%3A%0A-%20Visuel%20%3A%20%28je%20l%27ai%20/%20%C3%A0%20cr%C3%A9er%29%0A%0AMerci%20%21%0A">Votre projet →</a>
+    </div>
+
+
+    <div class="real carousel" id="realisations">
+      <div class="sec-head">
+        <span class="label">Réalisations</span>
+        <h2><span class="print" data-t="Réalisations">Réalisations</span></h2>
+        <p class="real-intro">Logos et visuels, impression de t-shirts, sweats, tote bags et affiches&nbsp;: pour des festivals, des associations, des commerces, des mairies et des particuliers.</p>
+      </div>
+      <div class="real-bar">
+        <span class="label">Faites défiler</span>
+        <div class="real-nav"><button type="button" class="prev" aria-label="Photos précédentes">←</button><button type="button" class="next" aria-label="Photos suivantes">→</button></div>
+      </div>
+      <div class="track" id="real-track" tabindex="0" aria-label="Galerie des réalisations">
+        <figure><img src="img/commande-festivarts.jpg" alt="T-shirt blanc imprimé du logo Festiv'Arts en rouge" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · t-shirts</figcaption></figure>
+        <figure><img src="img/real-festivarts-2379.jpg" alt="T-shirt noir imprimé du logo Festiv'Arts en rouge" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · t-shirts noirs</figcaption></figure>
+        <figure><img src="img/commande-tote.jpg" alt="Tote bag imprimé du logo Festiv'Arts" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · tote bags</figcaption></figure>
+        <figure><img src="img/real-tshirt-noir.jpg" alt="T-shirts noirs imprimés en rouge sur la presse" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Série de t-shirts</figcaption></figure>
+        <figure><img src="img/real-festivarts-2381.jpg" alt="Écran de sérigraphie du logo Festiv'Arts" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · l'écran</figcaption></figure>
+        <figure><img src="img/real-tirage-rouge.jpg" alt="Tirage en rouge sur t-shirt noir" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Tirage en cours</figcaption></figure>
+        <figure><img src="img/real-festivarts-2377.jpg" alt="T-shirts blanc et noir Festiv'Arts" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · série</figcaption></figure>
+        <figure><img src="img/real-carrousel.jpg" alt="Impression sur la presse carrousel" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Presse carrousel</figcaption></figure>
+        <figure><img src="img/real-festivarts-2383.jpg" alt="Tote bag Festiv'Arts" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · tote bags</figcaption></figure>
+        <figure><img src="img/real-tshirt-dos.jpg" alt="T-shirt imprimé dans le dos" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Impression dos</figcaption></figure>
+        <figure><img src="img/real-festivarts-2378.jpg" alt="Détail du logo imprimé" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · détail</figcaption></figure>
+      </div>
+    </div>
+    <div class="cta"><a class="btn" href="mailto:sebos.mariot@gmail.com?subject=Demande%20de%20devis%20s%C3%A9rigraphie&amp;body=Bonjour%20S%C3%A9bastien%2C%0A%0AJe%20souhaite%20un%20devis%20pour%20%3A%0A-%20Support%20%28t-shirts%2C%20sweats%2C%20tote%20bags%2C%20affiches%E2%80%A6%29%20%3A%0A-%20Quantit%C3%A9%20%3A%0A-%20Nombre%20de%20couleurs%20%3A%0A-%20Date%20souhait%C3%A9e%20%3A%0A-%20Visuel%20%3A%20%28je%20l%27ai%20/%20%C3%A0%20cr%C3%A9er%29%0A%0AMerci%20%21%0A">Demander un devis</a><span class="label">Réponse sous quelques jours</span></div>
+  </div>
+</section>
+
+<section id="ateliers" class="slab blue">
+  <i class="reg tl" aria-hidden="true"></i><i class="reg br" aria-hidden="true"></i>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Ateliers de sérigraphie</span>
+      <h2><span class="print" data-t="Imprimer soi-même">Imprimer soi-même</span></h2>
+      <p>J'anime des ateliers où chacun dessine, prépare son écran et tire sa propre impression. En festival, avec les enfants dans le cadre de l'association Pigment, ou avec des adultes à l'atelier.</p>
+    </div>
+    <div class="sub" style="margin-top:0"><h3>En festival</h3><p>Un poste d'impression monté sur place&nbsp;: le public voit l'affiche se faire, et repart avec la sienne.</p></div>
+    <div class="carousel">
+      <div class="real-bar"><span class="label">Faites défiler</span><div class="real-nav"><button type="button" class="prev" aria-label="Photos précédentes">←</button><button type="button" class="next" aria-label="Photos suivantes">→</button></div></div>
+      <div class="track" tabindex="0" aria-label="Galerie des ateliers en festival">
+        <figure><img src="img/festival-tirage.jpg" alt="Sébastien tire une affiche en rouge sur un poste d'impression en festival" width="900" height="1125" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/festival-sechage.jpg" alt="Affiches en bleu et rouge suspendues au séchage" width="900" height="1125" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/festival-affiches.jpg" alt="Affiches rouges fraîchement imprimées sur une table" width="900" height="1125" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/festival-plus-1.jpg" alt="Sébastien tire une affiche à la racle" width="800" height="1000" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/festival-plus-2.jpg" alt="Affiche Petite Échelle au séchage" width="800" height="1000" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/festival-plus-3.jpg" alt="Affiches rouges suspendues au séchage" width="800" height="1000" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/festival-plus-4.jpg" alt="Le public autour du poste d'impression en festival" width="800" height="1000" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/festival-plus-5.jpg" alt="Sébastien derrière l'écran en festival" width="800" height="1000" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/festival-plus-6.jpg" alt="Affiches fraîchement imprimées" width="800" height="1000" loading="lazy" draggable="false"></figure>
+      </div>
+    </div>
+<div class="sub"><h3>Avec les enfants</h3><p>Avec l'association Pigment&nbsp;: chacun dessine son personnage, découvre l'insolation de l'écran et imprime son propre tote bag.</p></div>
+    <div class="carousel">
+      <div class="real-bar"><span class="label">Faites défiler</span><div class="real-nav"><button type="button" class="prev" aria-label="Photos précédentes">←</button><button type="button" class="next" aria-label="Photos suivantes">→</button></div></div>
+      <div class="track" tabindex="0" aria-label="Galerie des ateliers enfants">
+        <figure><img src="img/enfants-insolation.jpg" alt="Des enfants regardent l'insolation d'un écran" width="900" height="1125" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/enfants-tirage.jpg" alt="Des enfants impriment leur dessin avec Sébastien" width="900" height="1125" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/enfants-totes.jpg" alt="Tote bags imprimés avec les dessins des enfants" width="900" height="1125" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/enfants-plus-1.jpg" alt="Écran prêt avec le dessin d'un enfant" width="800" height="1000" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/enfants-plus-2.jpg" alt="Encre rouge sur l'écran" width="800" height="1000" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/enfants-plus-3.jpg" alt="Les enfants regardent le tirage" width="800" height="1000" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/enfants-plus-4.jpg" alt="Dessins des enfants imprimés sur tote bags" width="800" height="1000" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/enfants-plus-5.jpg" alt="Tote bags imprimés en rouge et en bleu" width="800" height="1000" loading="lazy" draggable="false"></figure>
+      </div>
+    </div>
+<div class="sub"><h3>Avec les adultes</h3><p>Des séances à l'atelier pour réaliser une affiche en une ou plusieurs couleurs, du dessin au tirage.</p></div>
+    <div class="carousel">
+      <div class="real-bar"><span class="label">Faites défiler</span><div class="real-nav"><button type="button" class="prev" aria-label="Photos précédentes">←</button><button type="button" class="next" aria-label="Photos suivantes">→</button></div></div>
+      <div class="track" tabindex="0" aria-label="Galerie des ateliers adultes">
+        <figure><img src="img/adultes-atelier.jpg" alt="Participants d'un atelier adultes autour des tables d'impression" width="900" height="1125" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/adultes-tirage.jpg" alt="Une participante tire son impression avec Sébastien" width="900" height="1125" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/adultes-print.jpg" alt="Affiche en trois couleurs réalisée en atelier" width="900" height="1125" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/adultes-plus-1.jpg" alt="Participants qui manipulent un écran" width="800" height="1000" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/adultes-plus-2.jpg" alt="Insolation d'un écran à la lumière bleue" width="800" height="1000" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/adultes-plus-3.jpg" alt="Affiche rouge et noire réalisée en atelier" width="800" height="1000" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/adultes-plus-4.jpg" alt="Paysage en couleurs sur fond noir réalisé en atelier" width="800" height="1000" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/adultes-plus-5.jpg" alt="Affiche rouge et noire réalisée en atelier" width="800" height="1000" loading="lazy" draggable="false"></figure>
+        <figure><img src="img/adultes-plus-6.jpg" alt="Écran vert sur la table d'impression" width="800" height="1000" loading="lazy" draggable="false"></figure>
+      </div>
+    </div>
+    <div class="cta"><a class="btn" href="#contact">Organiser un atelier</a><span class="label">Écoles, centres de loisirs, mairies, festivals</span></div>
+  </div>
+</section>
+
+<section id="artiste" class="on-paper">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Travail d'artiste</span>
+      <h2><span class="print" data-t="Des visages, en traits et en couleurs">Des visages, en traits et en couleurs</span></h2>
+      <p>Je travaille principalement sur les visages, parfois épurés et très figuratifs, parfois suggérés ou abstraits, en laissant toujours une place à l'interprétation. Sur toile, sur papier, en sérigraphie et sur les murs.</p>
+    </div>
+    <div class="cats">
+      <details class="cat">
+        <summary><h3>Peintures &amp; toiles</h3><span class="count">13 œuvres</span><span class="plus" aria-hidden="true">+</span><span class="peek" aria-hidden="true"><img src="img/toile-1.jpg" alt="" loading="lazy"><img src="img/toile-2.jpg" alt="" loading="lazy"><img src="img/toile-4.jpg" alt="" loading="lazy"><img src="img/toile-3.jpg" alt="" loading="lazy"><span class="more">Voir les 13</span></span></summary>
+        <div class="cat-body">
+    <div class="works">
+      <figure><img src="img/toile-1.jpg" alt="Toile, visages découpés en bleu sur fond crème" loading="lazy"></figure>
+      <figure><img src="img/toile-2.jpg" alt="Toile, écritures noires sur fond dégradé multicolore" loading="lazy"></figure>
+      <figure><img src="img/toile-4.jpg" alt="Toile, visages noirs sur dégradé turquoise et violet" loading="lazy"></figure>
+      <figure><img src="img/toile-3.jpg" alt="Toile, visages peints sur fond brun" loading="lazy"></figure>
+      <figure><img src="img/dessin-11.jpg" alt="Peinture, main colorée devant un visage" loading="lazy"></figure>
+      <figure><img src="img/toile-7.jpg" alt="Visage peint en rouge orangé" loading="lazy"></figure>
+      <figure><img src="img/toile-10.jpg" alt="Diptyque, visages noirs sur blanc" loading="lazy"></figure>
+      <figure><img src="img/toile-5.jpg" alt="Toile abstraite, verts et bleus" loading="lazy"></figure>
+      <figure><img src="img/dessin-9.jpg" alt="Peinture, visages au trait sur fond jaune et bleu" loading="lazy"></figure>
+      <figure><img src="img/toile-6.jpg" alt="Toile, traits rouges et jaunes" loading="lazy"></figure>
+      <figure><img src="img/dessin-10.jpg" alt="Toile abstraite multicolore" loading="lazy"></figure>
+      <figure><img src="img/toile-11.jpg" alt="Toile, visages blancs sur fond bleu canard" loading="lazy"></figure>
+      <figure><img src="img/toile-12.jpg" alt="Œuvre en noir et blanc, lumière dans une rue" loading="lazy"></figure>
+        </div>
+        </div>
+      </details>
+      <details class="cat">
+        <summary><h3>Dessins &amp; encres</h3><span class="count">9 œuvres</span><span class="plus" aria-hidden="true">+</span><span class="peek" aria-hidden="true"><img src="img/dessin-12.jpg" alt="" loading="lazy"><img src="img/dessin-1.jpg" alt="" loading="lazy"><img src="img/dessin-2.jpg" alt="" loading="lazy"><img src="img/dessin-5.jpg" alt="" loading="lazy"><span class="more">Voir les 9</span></span></summary>
+        <div class="cat-body">
+    <div class="works">
+      <figure><img src="img/dessin-12.jpg" alt="Grand visage à l'encre, encadré" loading="lazy"></figure>
+      <figure><img src="img/dessin-1.jpg" alt="Visage, traits rouges" loading="lazy"></figure>
+      <figure><img src="img/dessin-2.jpg" alt="Visage, noir et rouge" loading="lazy"></figure>
+      <figure><img src="img/dessin-5.jpg" alt="Visage à l'encre diluée" loading="lazy"></figure>
+      <figure><img src="img/dessin-3.jpg" alt="Deux visages, fusain et couleurs" loading="lazy"></figure>
+      <figure><img src="img/dessin-6.jpg" alt="Visage à l'encre et à l'aquarelle" loading="lazy"></figure>
+      <figure><img src="img/dessin-4.jpg" alt="Visages à l'aquarelle" loading="lazy"></figure>
+      <figure><img src="img/dessin-7.jpg" alt="Visage, encre et ligne" loading="lazy"></figure>
+      <figure><img src="img/dessin-8.jpg" alt="Personnage assis devant un mur de briques" loading="lazy"></figure>
+        </div>
+        </div>
+      </details>
+      <details class="cat">
+        <summary><h3>Sérigraphies d'art</h3><span class="count">23 œuvres</span><span class="plus" aria-hidden="true">+</span><span class="peek" aria-hidden="true"><img src="img/oeuvre-50x70-11.jpg" alt="" loading="lazy"><img src="img/oeuvre-a3-6.jpg" alt="" loading="lazy"><img src="img/oeuvre-50x70-7.jpg" alt="" loading="lazy"><img src="img/toile-9.jpg" alt="" loading="lazy"><span class="more">Voir les 23</span></span></summary>
+        <div class="cat-body">
+        <p>Tirages en A3 et 50 × 70 cm.</p>
+    <div class="grid sq">
+      <figure><img src="img/oeuvre-50x70-11.jpg" alt="Visage peint, jaune et violet" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-a3-6.jpg" alt="Sérigraphie de visages découpés en bleu" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-50x70-7.jpg" alt="Visage géométrique noir sur triangle jaune" loading="lazy"></figure>
+      <figure><img src="img/toile-9.jpg" alt="Sérigraphie, visages bordeaux sur jaune" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-50x70-3.jpg" alt="Visage peint, bleu et vert" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-a3-3.jpg" alt="Profil noir sur bande rouge" loading="lazy"></figure>
+      <figure><img src="img/toile-8.jpg" alt="Sérigraphie, motifs violets et turquoise sur vert" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-50x70-6.jpg" alt="Visage à l'encre noire" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-50x70-2.jpg" alt="Visage peint, magenta et turquoise" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-a3-8.jpg" alt="Visage en une ligne" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-50x70-8.jpg" alt="Forêt enneigée sous une bande turquoise" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-50x70-1.jpg" alt="Visage peint, bleu et noir" width="800" height="800" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-50x70-12.jpg" alt="Visage peint, rouge et bleu" width="800" height="800" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-50x70-13.jpg" alt="Visage peint, noir et jaune" width="800" height="800" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-50x70-5.jpg" alt="Visage peint, bleu et rouge" width="800" height="800" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-50x70-4.jpg" alt="Visages découpés en noir" width="800" height="800" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-50x70-9.jpg" alt="Tache rouge et noire" width="800" height="800" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-50x70-10.jpg" alt="Motifs roses et bleus" width="800" height="800" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-a3-1.jpg" alt="Visages au trait, noir et rouge" width="800" height="800" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-a3-2.jpg" alt="Visages découpés en gris" width="800" height="800" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-a3-4.jpg" alt="Visages au trait en colonnes" width="800" height="800" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-a3-5.jpg" alt="Petits visages au trait" width="800" height="800" loading="lazy"></figure>
+      <figure><img src="img/oeuvre-a3-7.jpg" alt="Visages en une ligne" width="800" height="800" loading="lazy"></figure>
+    </div>
+        </div>
+      </details>
+      <details class="cat">
+        <summary><h3>Fresques murales</h3><span class="count">4 photos</span><span class="plus" aria-hidden="true">+</span><span class="peek" aria-hidden="true"><img src="img/fresque-chantier.jpg" alt="" loading="lazy"><img src="img/fresque-vue.jpg" alt="" loading="lazy"><img src="img/fresque-detail.jpg" alt="" loading="lazy"><img src="img/fresque-couleur.jpg" alt="" loading="lazy"><span class="more">Voir les 4</span></span></summary>
+        <div class="cat-body">
+        <p>Grands formats peints, de la maquette au mur.</p>
+    <div class="wide-img"><img src="img/fresque-chantier.jpg" alt="Fresque Sebos terminée sur la façade d'un bâtiment" width="1400" height="934" loading="lazy"></div>
+    <div class="grid">
+      <figure><img src="img/fresque-vue.jpg" alt="Sébastien peint la fresque depuis une nacelle" width="1400" height="934" loading="lazy"></figure>
+      <figure><img src="img/fresque-detail.jpg" alt="Détail de la fresque, lettres et visages en bleu" width="1400" height="1050" loading="lazy"></figure>
+      <figure><img src="img/fresque-couleur.jpg" alt="Deuxième fresque, visages en couleurs" width="1400" height="1050" loading="lazy"></figure>
+    </div>
+        </div>
+      </details>
+      <details class="cat">
+        <summary><h3>T-shirts &amp; sweats</h3><span class="count">6 pièces</span><span class="plus" aria-hidden="true">+</span><span class="peek" aria-hidden="true"><img src="img/textile-8919.jpg" alt="" loading="lazy"><img src="img/textile-8951.jpg" alt="" loading="lazy"><img src="img/textile-8972.jpg" alt="" loading="lazy"><img src="img/textile-9046.jpg" alt="" loading="lazy"><span class="more">Voir les 6</span></span></summary>
+        <div class="cat-body">
+        <p>Mes visuels, imprimés à la main sur t-shirts et sweats, en petites séries.</p>
+    <div class="grid">
+      <figure><img src="img/textile-8919.jpg" alt="T-shirt noir, trois bandes rouges et motifs blancs" width="800" height="1000" loading="lazy"></figure>
+      <figure><img src="img/textile-8951.jpg" alt="Impression bleue sur t-shirt gris chiné" width="800" height="1000" loading="lazy"></figure>
+      <figure><img src="img/textile-8972.jpg" alt="T-shirt blanc Vandal" width="800" height="1000" loading="lazy"></figure>
+      <figure><img src="img/textile-9046.jpg" alt="Détail du visuel Strange Visions sur t-shirt blanc" width="800" height="1000" loading="lazy"></figure>
+      <figure><img src="img/textile-9060.jpg" alt="Visage en une ligne blanche sur t-shirt noir" width="800" height="1000" loading="lazy"></figure>
+      <figure><img src="img/textile-9078.jpg" alt="Sweat noir à capuche imprimé en blanc" width="800" height="1000" loading="lazy"></figure>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="apropos" class="slab red">
+  <i class="reg tr" aria-hidden="true"></i>
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:32px">
+      <span class="label">À propos</span>
+      <h2><span class="print" data-t="Sébastien Mariot, dit Sebos">Sébastien Mariot, dit Sebos</span></h2>
+    </div>
+    <div class="about">
+      <div class="framed"><img src="img/atelier-tirage.jpg" alt="Sébastien à l'atelier" width="900" height="1342" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%"></div>
+      <div class="txt">
+        <p>Originaire de Thonon-les-Bains, diplômé d'un master en design industriel en 2015, je me suis spécialisé dans le graphisme et la création d'identité visuelle, en agence puis en freelance.</p>
+        <p>En parallèle, j'ai développé mon univers artistique et je me suis formé à la sérigraphie. Séduit par la multitude d'applications possibles et par le côté artisanal de cette technique, j'ai ouvert mon atelier à Thonon-les-Bains début 2022. Mes créations trouvent leur place sur le papier comme sur le textile, et je peins aussi sur les murs.</p>
+        <p>Mon travail questionne notre identité et la pluralité des émotions qui nous traversent collectivement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="expo" class="on-paper">
+  <div class="wrap expo">
+    <div>
+      <span class="label">Prochaine exposition</span>
+      <h3 style="margin-top:14px"><span class="print" data-t="Forum de la Visitation">Forum de la Visitation</span></h3>
+      <p style="margin-top:14px; color: var(--muted)">Pôle culturel de la Visitation, médiathèque de Thonon-les-Bains. Exposition personnelle à l'automne 2027.</p>
+    </div>
+    <div class="dates" aria-label="Dates de l'exposition">
+      <div><span>Vernissage</span><b>sam. 30 oct. 2027 · 11h</b></div>
+      <div><span>Exposition</span><b>30 oct. → 4 déc. 2027</b></div>
+      <div><span>Lieu</span><b>Thonon-les-Bains</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="slab black">
+  <i class="reg tl" aria-hidden="true"></i><i class="reg br" aria-hidden="true"></i>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Contact</span>
+      <h2><span class="print" data-t="Un projet ? Écrivez-moi">Un projet&nbsp;? Écrivez-moi</span></h2>
+      <p>Pour un devis, un atelier, une fresque ou une œuvre, dites-moi ce que vous avez en tête.</p>
+    </div>
+    <div class="contact">
+      <div class="c-item"><span class="label">E-mail</span><span class="val" id="mail">sebos.mariot@gmail.com</span><button type="button" data-target="mail">Copier</button></div>
+      <div class="c-item"><span class="label">Téléphone</span><span class="val" id="tel">06 82 47 67 13</span><button type="button" data-target="tel">Copier</button></div>
+      <div class="c-item"><span class="label">Instagram</span><a class="val" href="https://www.instagram.com/sebos_gh/" target="_blank" rel="noopener">@sebos_gh</a><span></span></div>
+      <div class="c-item"><span class="label">Atelier</span><span class="val">Thonon-les-Bains</span><span></span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Haut de page"><img src="img/logo.svg" alt="" width="140" height="108" loading="lazy"></a>
+    <span class="label">Imprimé à la main à Thonon-les-Bains</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('button[data-target]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var el = document.getElementById(b.dataset.target);
+    var text = el.textContent.trim();
+    var done = function () { b.textContent = 'Copié'; setTimeout(function () { b.textContent = 'Copier'; }, 1600); };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      b.textContent = 'Sélectionné';
+    };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  });
+});
+
+document.querySelectorAll('.carousel').forEach(function (c) {
+  var t = c.querySelector('.track'), prev = c.querySelector('.prev'), next = c.querySelector('.next');
+  if (!t || !prev || !next) return;
+  function step() { var f = t.querySelector('figure'); return f ? f.getBoundingClientRect().width + 12 : 300; }
+  function update() { prev.disabled = t.scrollLeft <= 2; next.disabled = t.scrollLeft + t.clientWidth >= t.scrollWidth - 2; }
+  prev.addEventListener('click', function () { t.scrollBy({ left: -step(), behavior: 'smooth' }); });
+  next.addEventListener('click', function () { t.scrollBy({ left: step(), behavior: 'smooth' }); });
+  t.addEventListener('scroll', update, { passive: true }); window.addEventListener('resize', update); update();
+  var down = false, x0 = 0, s0 = 0;
+  t.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse') return; down = true; x0 = e.clientX; s0 = t.scrollLeft; t.classList.add('dragging'); });
+  window.addEventListener('pointermove', function (e) { if (down) t.scrollLeft = s0 - (e.clientX - x0); });
+  window.addEventListener('pointerup', function () { if (down) { down = false; t.classList.remove('dragging'); } });
+  t.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { e.preventDefault(); next.click(); } if (e.key === 'ArrowLeft') { e.preventDefault(); prev.click(); } });
+});
+</script>
+</body>
+</html>
