@@ -153,6 +153,10 @@ section { padding-block: 96px; }
 /* Galerie Réalisations : défilement horizontal, au doigt, à la souris ou aux flèches */
 .real { margin-top: 96px; }
 .real .sec-head { margin-bottom: 18px; }
+.cat-body h4.sub { font-family: var(--f-mono); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-top: 14px; }
+.cat-body h4.sub:first-of-type { margin-top: 4px; }
+.cat-body figcaption { font-family: var(--f-mono); font-size: 11px; color: var(--muted); margin-top: 6px; }
+.real .cats { margin-top: 22px; }
 .real-intro { font-size: 16px; color: var(--muted); max-width: 62ch; }
 .real-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin: 26px 0 14px; }
 .real-nav { display: flex; gap: 8px; }
@@ -337,43 +341,71 @@ footer .logo { width: 70px; }
     </div>
 
 
-    <div class="real carousel" id="realisations">
+    <div class="real" id="realisations">
       <div class="sec-head">
         <span class="label">Réalisations</span>
         <h2><span class="print" data-t="Réalisations">Réalisations</span></h2>
         <p class="real-intro">Logos et visuels, impression de t-shirts, sweats, tote bags et affiches&nbsp;: pour des festivals, des associations, des commerces, des mairies et des particuliers.</p>
       </div>
-      <div class="real-bar">
-        <span class="label">Faites défiler</span>
-        <div class="real-nav"><button type="button" class="prev" aria-label="Photos précédentes">←</button><button type="button" class="next" aria-label="Photos suivantes">→</button></div>
-      </div>
-      <div class="track" id="real-track" tabindex="0" aria-label="Galerie des réalisations">
-        <figure><img src="img/real2-01.jpg" alt="T-shirt « Le monde qu'on m'a bicravé est nocif » pour un collectif de rap" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Collectif de rap · t-shirt « Le monde qu'on m'a bicravé est nocif »</figcaption></figure>
-        <figure><img src="img/real2-02.jpg" alt="Détail du lettrage 16e Sous-Sol imprimé en blanc" width="800" height="1000" loading="lazy" draggable="false"><figcaption>16e Sous-Sol, collectif de rap · détail</figcaption></figure>
-        <figure><img src="img/real2-03.jpg" alt="Sweat noir 16e Sous-Sol, lettrage graffiti dans le dos" width="800" height="1000" loading="lazy" draggable="false"><figcaption>16e Sous-Sol, collectif de rap · sweat</figcaption></figure>
-        <figure><img src="img/real2-04.jpg" alt="Pochons en toile de jute imprimés d'un logo rouge" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Pochons en toile · logo</figcaption></figure>
-        <figure><img src="img/real2-05.jpg" alt="T-shirts L'animalerie pour un collectif de rap lyonnais" width="800" height="1000" loading="lazy" draggable="false"><figcaption>L'animalerie, collectif rap lyonnais · t-shirts</figcaption></figure>
-        <figure><img src="img/real2-06.jpg" alt="T-shirts L'animalerie en trois couleurs" width="800" height="1000" loading="lazy" draggable="false"><figcaption>L'animalerie, collectif rap lyonnais · 3 couleurs</figcaption></figure>
-        <figure><img src="img/real2-07.jpg" alt="Affiche du festival Muzko 2023, lignes blanches sur fond vert" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festival Muzko 2023 · affiche</figcaption></figure>
-        <figure><img src="img/real2-08.jpg" alt="Détail de l'affiche du festival Muzko 2023" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festival Muzko 2023 · détail</figcaption></figure>
-        <figure><img src="img/real2-09.jpg" alt="Tirage d'art en noir, chat et lettrages graffiti, édition 5/50" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Tirage d'art · édition 5/50</figcaption></figure>
-        <figure><img src="img/real2-10.jpg" alt="Détail du tirage chat noir et lettrages" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Tirage d'art · détail</figcaption></figure>
-        <figure><img src="img/real2-11.jpg" alt="Cartes Night Illusions imprimées en noir sur papier épais" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Cartes Night Illusions</figcaption></figure>
-        <figure><img src="img/real2-12.jpg" alt="Tirage photographique en sérigraphie d'un abribus tagué à Barcelone, édition limitée" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Abribus, Barcelone · tirage photo, édition limitée</figcaption></figure>
-        <figure><img src="img/real2-13.jpg" alt="Détail de la trame du tirage Abribus, Barcelone" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Abribus, Barcelone · la trame</figcaption></figure>
-        <figure><img src="img/real2-14.jpg" alt="Détail des tags du tirage Abribus, Barcelone" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Abribus, Barcelone · détail</figcaption></figure>
-        <figure><img src="img/real2-15.jpg" alt="Gros plan sur les tags du tirage Abribus, Barcelone" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Abribus, Barcelone · détail</figcaption></figure>
-        <figure><img src="img/commande-festivarts.jpg" alt="T-shirt blanc imprimé du logo Festiv'Arts en rouge" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · t-shirts</figcaption></figure>
-        <figure><img src="img/real-festivarts-2379.jpg" alt="T-shirt noir imprimé du logo Festiv'Arts en rouge" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · t-shirts noirs</figcaption></figure>
-        <figure><img src="img/commande-tote.jpg" alt="Tote bag imprimé du logo Festiv'Arts" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · tote bags</figcaption></figure>
-        <figure><img src="img/real-tshirt-noir.jpg" alt="T-shirts noirs imprimés en rouge sur la presse" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Série de t-shirts · Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></figcaption></figure>
-        <figure><img src="img/real-festivarts-2381.jpg" alt="Écran de sérigraphie du logo Festiv'Arts" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · l'écran</figcaption></figure>
-        <figure><img src="img/real-tirage-rouge.jpg" alt="Tirage en rouge sur t-shirt noir" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Tirage en cours · Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></figcaption></figure>
-        <figure><img src="img/real-festivarts-2377.jpg" alt="T-shirts blanc et noir Festiv'Arts" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · série</figcaption></figure>
-        <figure><img src="img/real-carrousel.jpg" alt="Impression sur la presse carrousel" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Presse carrousel · Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></figcaption></figure>
-        <figure><img src="img/real-festivarts-2383.jpg" alt="Tote bag Festiv'Arts" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · tote bags</figcaption></figure>
-        <figure><img src="img/real-tshirt-dos.jpg" alt="T-shirt imprimé dans le dos" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Impression dos · Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></figcaption></figure>
-        <figure><img src="img/real-festivarts-2378.jpg" alt="Détail du logo imprimé" width="800" height="1000" loading="lazy" draggable="false"><figcaption>Festiv'Arts · détail</figcaption></figure>
+      <div class="cats">
+      <details class="cat">
+        <summary><h3>T-shirts, sweats &amp; sacs</h3><span class="count">12 photos</span><span class="plus" aria-hidden="true">+</span><span class="peek" aria-hidden="true"><img src="img/commande-festivarts.jpg" alt="" loading="lazy"><img src="img/real2-03.jpg" alt="" loading="lazy"><img src="img/real2-05.jpg" alt="" loading="lazy"><img src="img/commande-tote.jpg" alt="" loading="lazy"><span class="more">Voir les 12</span></span></summary>
+        <div class="cat-body">
+        <p>Séries imprimées pour des festivals, des collectifs et des marques.</p>
+    <h4 class="sub">Festiv'Arts · t-shirts et tote bags</h4>
+    <div class="grid">
+      <figure><img src="img/commande-festivarts.jpg" alt="T-shirt blanc imprimé du logo Festiv'Arts en rouge" width="800" height="1000" loading="lazy"><figcaption>T-shirts blancs</figcaption></figure>
+      <figure><img src="img/real-festivarts-2379.jpg" alt="T-shirt noir imprimé du logo Festiv'Arts en rouge" width="800" height="1000" loading="lazy"><figcaption>T-shirts noirs</figcaption></figure>
+      <figure><img src="img/real-festivarts-2377.jpg" alt="T-shirts blanc et noir Festiv'Arts" width="800" height="1000" loading="lazy"><figcaption>La série</figcaption></figure>
+      <figure><img src="img/commande-tote.jpg" alt="Tote bag imprimé du logo Festiv'Arts" width="800" height="1000" loading="lazy"><figcaption>Tote bags</figcaption></figure>
+      <figure><img src="img/real-festivarts-2383.jpg" alt="Tote bag Festiv'Arts" width="800" height="1000" loading="lazy"><figcaption>Tote bag</figcaption></figure>
+      <figure><img src="img/real-festivarts-2378.jpg" alt="Détail du logo imprimé" width="800" height="1000" loading="lazy"><figcaption>Détail</figcaption></figure>
+    </div>
+    <h4 class="sub">Collectifs &amp; marques</h4>
+    <div class="grid">
+      <figure><img src="img/real2-01.jpg" alt="T-shirt « Le monde qu'on m'a bicravé est nocif » pour un collectif de rap" width="800" height="1000" loading="lazy"><figcaption>Collectif de rap · « Le monde qu'on m'a bicravé est nocif »</figcaption></figure>
+      <figure><img src="img/real2-02.jpg" alt="Détail du lettrage 16e Sous-Sol imprimé en blanc" width="800" height="1000" loading="lazy"><figcaption>16e Sous-Sol, collectif de rap · détail</figcaption></figure>
+      <figure><img src="img/real2-03.jpg" alt="Sweat noir 16e Sous-Sol, lettrage graffiti dans le dos" width="800" height="1000" loading="lazy"><figcaption>16e Sous-Sol, collectif de rap · sweat</figcaption></figure>
+      <figure><img src="img/real2-05.jpg" alt="T-shirts L'animalerie pour un collectif de rap lyonnais" width="800" height="1000" loading="lazy"><figcaption>L'animalerie, collectif rap lyonnais · t-shirts</figcaption></figure>
+      <figure><img src="img/real2-06.jpg" alt="T-shirts L'animalerie en trois couleurs" width="800" height="1000" loading="lazy"><figcaption>L'animalerie · 3 couleurs</figcaption></figure>
+      <figure><img src="img/real2-04.jpg" alt="Pochons en toile de jute imprimés d'un logo rouge" width="800" height="1000" loading="lazy"><figcaption>Pochons en toile · logo</figcaption></figure>
+    </div>
+        </div>
+      </details>
+      <details class="cat">
+        <summary><h3>Affiches &amp; tirages d'art</h3><span class="count">9 photos</span><span class="plus" aria-hidden="true">+</span><span class="peek" aria-hidden="true"><img src="img/real2-07.jpg" alt="" loading="lazy"><img src="img/real2-09.jpg" alt="" loading="lazy"><img src="img/real2-12.jpg" alt="" loading="lazy"><img src="img/real2-11.jpg" alt="" loading="lazy"><span class="more">Voir les 9</span></span></summary>
+        <div class="cat-body">
+        <p>Affiches de festival, cartes et tirages d'art en édition limitée.</p>
+    <h4 class="sub">Affiches &amp; cartes</h4>
+    <div class="grid">
+      <figure><img src="img/real2-07.jpg" alt="Affiche du festival Muzko 2023, lignes blanches sur fond vert" width="800" height="1000" loading="lazy"><figcaption>Festival Muzko 2023 · affiche</figcaption></figure>
+      <figure><img src="img/real2-08.jpg" alt="Détail de l'affiche du festival Muzko 2023" width="800" height="1000" loading="lazy"><figcaption>Festival Muzko 2023 · détail</figcaption></figure>
+      <figure><img src="img/real2-11.jpg" alt="Cartes Night Illusions imprimées en noir sur papier épais" width="800" height="1000" loading="lazy"><figcaption>Cartes Night Illusions</figcaption></figure>
+    </div>
+    <h4 class="sub">Tirages d'art</h4>
+    <div class="grid">
+      <figure><img src="img/real2-09.jpg" alt="Tirage d'art en noir, chat et lettrages graffiti, édition 5/50" width="800" height="1000" loading="lazy"><figcaption>Tirage d'art · édition 5/50</figcaption></figure>
+      <figure><img src="img/real2-10.jpg" alt="Détail du tirage chat noir et lettrages" width="800" height="1000" loading="lazy"><figcaption>Tirage d'art · détail</figcaption></figure>
+      <figure><img src="img/real2-12.jpg" alt="Tirage photographique en sérigraphie d'un abribus tagué à Barcelone, édition limitée" width="800" height="1000" loading="lazy"><figcaption>Abribus, Barcelone · édition limitée</figcaption></figure>
+      <figure><img src="img/real2-13.jpg" alt="Détail de la trame du tirage Abribus, Barcelone" width="800" height="1000" loading="lazy"><figcaption>Abribus, Barcelone · la trame</figcaption></figure>
+      <figure><img src="img/real2-14.jpg" alt="Détail des tags du tirage Abribus, Barcelone" width="800" height="1000" loading="lazy"><figcaption>Abribus, Barcelone · détail</figcaption></figure>
+      <figure><img src="img/real2-15.jpg" alt="Gros plan sur les tags du tirage Abribus, Barcelone" width="800" height="1000" loading="lazy"><figcaption>Abribus, Barcelone · détail</figcaption></figure>
+    </div>
+        </div>
+      </details>
+      <details class="cat">
+        <summary><h3>À l'atelier</h3><span class="count">5 photos</span><span class="plus" aria-hidden="true">+</span><span class="peek" aria-hidden="true"><img src="img/real-tirage-rouge.jpg" alt="" loading="lazy"><img src="img/real-carrousel.jpg" alt="" loading="lazy"><img src="img/real-tshirt-noir.jpg" alt="" loading="lazy"><img src="img/real-festivarts-2381.jpg" alt="" loading="lazy"><span class="more">Voir les 5</span></span></summary>
+        <div class="cat-body">
+        <p>Les écrans, la presse et les tirages en cours.</p>
+    <div class="grid">
+      <figure><img src="img/real-tirage-rouge.jpg" alt="Tirage en rouge sur t-shirt noir" width="800" height="1000" loading="lazy"><figcaption>Tirage en cours · Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></figcaption></figure>
+      <figure><img src="img/real-carrousel.jpg" alt="Impression sur la presse carrousel" width="800" height="1000" loading="lazy"><figcaption>Presse carrousel · Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></figcaption></figure>
+      <figure><img src="img/real-tshirt-noir.jpg" alt="T-shirts noirs imprimés en rouge sur la presse" width="800" height="1000" loading="lazy"><figcaption>Série de t-shirts · Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></figcaption></figure>
+      <figure><img src="img/real-tshirt-dos.jpg" alt="T-shirt imprimé dans le dos" width="800" height="1000" loading="lazy"><figcaption>Impression dos · Photo&nbsp;: <a href="https://blandinefaure.com/" target="_blank" rel="noopener">Blandine Faure</a></figcaption></figure>
+      <figure><img src="img/real-festivarts-2381.jpg" alt="Écran de sérigraphie du logo Festiv'Arts" width="800" height="1000" loading="lazy"><figcaption>Festiv'Arts · l'écran</figcaption></figure>
+    </div>
+        </div>
+      </details>
       </div>
     </div>
     <div class="cta"><a class="btn" href="mailto:sebos.mariot@gmail.com?subject=Demande%20de%20devis%20s%C3%A9rigraphie&amp;body=Bonjour%20S%C3%A9bastien%2C%0A%0AJe%20souhaite%20un%20devis%20pour%20%3A%0A-%20Support%20%28t-shirts%2C%20sweats%2C%20tote%20bags%2C%20affiches%E2%80%A6%29%20%3A%0A-%20Quantit%C3%A9%20%3A%0A-%20Nombre%20de%20couleurs%20%3A%0A-%20Date%20souhait%C3%A9e%20%3A%0A-%20Visuel%20%3A%20%28je%20l%27ai%20/%20%C3%A0%20cr%C3%A9er%29%0A%0AMerci%20%21%0A">Demander un devis</a><span class="label">Réponse sous quelques jours</span></div>
